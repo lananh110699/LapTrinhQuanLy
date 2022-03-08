@@ -77,3 +77,9 @@ G:\LapTrinhQuanLyProject\NTLABaiThucHanh613\NTLABaiThucHanh613\obj\Debug\NTLABai
 G:\LapTrinhQuanLyProject\NTLABaiThucHanh613\NTLABaiThucHanh613\obj\Debug\NTLABaiThucHanh613.csproj.CopyComplete
 G:\LapTrinhQuanLyProject\NTLABaiThucHanh613\NTLABaiThucHanh613\obj\Debug\NTLABaiThucHanh613.dll
 G:\LapTrinhQuanLyProject\NTLABaiThucHanh613\NTLABaiThucHanh613\obj\Debug\NTLABaiThucHanh613.pdb
+G:\LapTrinhQuanLyProject\NTLABaiThucHanh613\NTLABaiThucHanh613\bin\EntityFramework.dll
+G:\LapTrinhQuanLyProject\NTLABaiThucHanh613\NTLABaiThucHanh613\bin\EntityFramework.SqlServer.dll
+G:\LapTrinhQuanLyProject\NTLABaiThucHanh613\NTLABaiThucHanh613\bin\EntityFramework.xml
+G:\LapTrinhQuanLyProject\NTLABaiThucHanh613\NTLABaiThucHanh613\bin\EntityFramework.SqlServer.xml
+G:\LapTrinhQuanLyProject\NTLABaiThucHanh613\NTLABaiThucHanh613\obj\Debug\NTLABaiThucHanh613.Migrations.create_3_table.resources
+G:\LapTrinhQuanLyProject\NTLABaiThucHanh613\NTLABaiThucHanh613\obj\Debug\NTLABaiThucHanh613.csproj.GenerateResource.cache

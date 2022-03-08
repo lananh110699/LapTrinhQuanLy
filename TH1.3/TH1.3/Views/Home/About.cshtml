@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Tin học kinh tế</p>
+@using (Html.BeginForm())
+{
+    <label>Mã sinh viên</label>
+    <input type="text" name="Masinhvien"  />
+    <input type="submit" name="Gửi dữ liệu"/>
+}
