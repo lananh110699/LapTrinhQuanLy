@@ -16,6 +16,8 @@ namespace NTLABaiTapThucHanh613.Models
         public virtual DbSet<XuatKho> XuatKhos { get; set; }
         public virtual DbSet<NhapKho> NhapKhos { get; set; }
         public virtual DbSet<NCC> NCCs { get; set; }
+        public virtual DbSet<KhachHang> KhachHangs { get; set; }
+        public virtual DbSet<NVKho> NVKhos { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

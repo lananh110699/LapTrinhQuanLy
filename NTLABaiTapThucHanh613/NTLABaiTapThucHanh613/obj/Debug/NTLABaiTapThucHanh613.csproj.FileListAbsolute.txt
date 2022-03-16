@@ -83,3 +83,4 @@ G:\LapTrinhQuanLyProject\NTLABaiTapThucHanh613\NTLABaiTapThucHanh613\bin\EntityF
 G:\LapTrinhQuanLyProject\NTLABaiTapThucHanh613\NTLABaiTapThucHanh613\bin\EntityFramework.SqlServer.xml
 G:\LapTrinhQuanLyProject\NTLABaiTapThucHanh613\NTLABaiTapThucHanh613\obj\Debug\NTLABaiTapThucHanh613.Migrations.done.resources
 G:\LapTrinhQuanLyProject\NTLABaiTapThucHanh613\NTLABaiTapThucHanh613\obj\Debug\NTLABaiTapThucHanh613.csproj.GenerateResource.cache
+G:\LapTrinhQuanLyProject\NTLABaiTapThucHanh613\NTLABaiTapThucHanh613\obj\Debug\NTLABaiTapThucHanh613.Migrations.Create_2_table.resources

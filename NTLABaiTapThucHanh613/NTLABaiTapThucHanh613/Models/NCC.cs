@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace NTLABaiTapThucHanh613.Models
 {
-    [Table("Nhà Cung Cấp")]
+    [Table("NCC")]
     public class NCC
     {
         [Key]

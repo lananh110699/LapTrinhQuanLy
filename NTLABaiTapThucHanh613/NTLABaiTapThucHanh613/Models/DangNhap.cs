@@ -7,7 +7,7 @@ using System.Web;
 
 namespace NTLABaiTapThucHanh613.Models
 {
-    [Table("Đăng Nhập")]
+    [Table("DangNhap")]
     public class DangNhap
     {
         [Key]
