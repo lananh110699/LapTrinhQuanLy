@@ -32,5 +32,6 @@ namespace NTLABaiTapThucHanh613.Models
         [Required(ErrorMessage = "SĐT không được bỏ trống")]
         [Display(Name = "SĐT")]
         public int SDT { get; set; }
+        public ICollection<NhapKho> NhapKho { get; set; }
     }
 }

@@ -29,5 +29,7 @@ namespace NTLABaiTapThucHanh613.Models
         [Required(ErrorMessage = "Đơn Giá không được bỏ trống")]
         [Display(Name = "Đơn Giá")]
         public int DonGia { get; set; }
+        public ICollection<XuatKho> XuatKho { get; set; }
+        public ICollection<NhapKho> NhapKho { get; set; }
     }
 }

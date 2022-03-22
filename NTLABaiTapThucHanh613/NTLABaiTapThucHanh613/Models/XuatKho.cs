@@ -20,9 +20,15 @@ namespace NTLABaiTapThucHanh613.Models
         [Required(ErrorMessage = "Ngày Xuất không được bỏ trống")]
         public string NgayXuat { get; set; }
 
+        [Required(ErrorMessage = "Mã Khách Hàng không được để trống")]
+        [Display(Name = "Mã Khách Hàng")]
+        public string MaKhachHang { get; set; }
+        public KhachHang KhachHang { get; set; }
+
         [Display(Name = "Mã Hàng")]
         [Required(ErrorMessage = "Mã Hàng không được bỏ trống")]
         public string MaHang { get; set; }
+        public HangHoa HangHoa { get; set; }
 
         [Display(Name = "Tên Hàng")]
         [Required(ErrorMessage = "Tên Hàng không được bỏ trống")]
