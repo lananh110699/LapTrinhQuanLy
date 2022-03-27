@@ -130,6 +130,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DangNhapsController.cs" />
+    <Compile Include="Controllers\HangHoasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -143,6 +144,7 @@
       <DependentUpon>202203160454118_Create_2_table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AutoGenerateKey.cs" />
     <Compile Include="Models\DangNhap.cs" />
     <Compile Include="Models\HangHoa.cs" />
     <Compile Include="Models\KhachHang.cs" />
@@ -189,14 +191,15 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\DangNhaps\Create.cshtml" />
-    <Content Include="Views\DangNhaps\Delete.cshtml" />
-    <Content Include="Views\DangNhaps\Details.cshtml" />
-    <Content Include="Views\DangNhaps\Edit.cshtml" />
-    <Content Include="Views\DangNhaps\Index.cshtml" />
+    <Content Include="Views\HangHoas\Create.cshtml" />
+    <Content Include="Views\HangHoas\Delete.cshtml" />
+    <Content Include="Views\HangHoas\Details.cshtml" />
+    <Content Include="Views\HangHoas\Edit.cshtml" />
+    <Content Include="Views\HangHoas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\DangNhaps\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
