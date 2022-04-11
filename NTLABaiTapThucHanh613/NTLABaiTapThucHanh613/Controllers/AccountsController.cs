@@ -6,13 +6,12 @@ using System.Web.Mvc;
 
 namespace NTLABaiTapThucHanh613.Controllers
 {
-    public class DangNhapsController : Controller
+    public class AccountsController : Controller
     {
-        // GET: DangNhaps
+        // GET: Accounts
         public ActionResult Index()
         {
             return View();
         }
-
     }
 }

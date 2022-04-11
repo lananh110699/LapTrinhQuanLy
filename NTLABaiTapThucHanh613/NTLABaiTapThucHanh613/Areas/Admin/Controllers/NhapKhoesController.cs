@@ -8,123 +8,118 @@ using System.Web;
 using System.Web.Mvc;
 using NTLABaiTapThucHanh613.Models;
 
-namespace NTLABaiTapThucHanh613.Controllers
+namespace NTLABaiTapThucHanh613.Areas.Admin.Controllers
 {
-    public class HangHoasController : Controller
+    public class NhapKhoesController : Controller
     {
         private LTQLDB db = new LTQLDB();
-        AutoGenerateKey Aukey = new AutoGenerateKey();
 
-        // GET: HangHoas
+        // GET: Admin/NhapKhoes
         public ActionResult Index()
         {
-            return View(db.HangHoas.ToList());
+            var nhapKhos = db.NhapKhos.Include(n => n.HangHoa).Include(n => n.NCC);
+            return View(nhapKhos.ToList());
         }
 
-        // GET: HangHoas/Details/5
+        // GET: Admin/NhapKhoes/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HangHoa hangHoa = db.HangHoas.Find(id);
-            if (hangHoa == null)
+            NhapKho nhapKho = db.NhapKhos.Find(id);
+            if (nhapKho == null)
             {
                 return HttpNotFound();
             }
-            return View(hangHoa);
+            return View(nhapKho);
         }
 
-        // GET: HangHoas/Create
+        // GET: Admin/NhapKhoes/Create
         public ActionResult Create()
         {
-
-            if (db.HangHoas.OrderByDescending(m => m.MaHang).Count() == 0)
-            {
-                var newID = "MHH001";
-                ViewBag.NewMHHID = newID;
-            }
-            else
-            {
-                var MHHID = db.HangHoas.OrderByDescending(m => m.MaHang).FirstOrDefault().MaHang;
-                var newID = Aukey.GenerateKey(MHHID);
-                ViewBag.NewMHHID = newID;
-            }
+            ViewBag.MaHang = new SelectList(db.HangHoas, "MaHang", "TenHang");
+            ViewBag.MaNCC = new SelectList(db.NCCs, "MaNCC", "TenNCC");
             return View();
-
         }
 
-        // POST: HangHoas/Create
+        // POST: Admin/NhapKhoes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaHang,TenHang,SoLuong,DonGia")] HangHoa hangHoa)
+        public ActionResult Create([Bind(Include = "MaPhieuNhap,NgayNhap,MaNCC,MaHang,TenHang,SoLuong,DonGia,ThanhTien")] NhapKho nhapKho)
         {
             if (ModelState.IsValid)
             {
-                db.HangHoas.Add(hangHoa);
+                db.NhapKhos.Add(nhapKho);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(hangHoa);
+            ViewBag.MaHang = new SelectList(db.HangHoas, "MaHang", "TenHang", nhapKho.MaHang);
+            ViewBag.MaNCC = new SelectList(db.NCCs, "MaNCC", "TenNCC", nhapKho.MaNCC);
+            return View(nhapKho);
         }
 
-        // GET: HangHoas/Edit/5
+        // GET: Admin/NhapKhoes/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HangHoa hangHoa = db.HangHoas.Find(id);
-            if (hangHoa == null)
+            NhapKho nhapKho = db.NhapKhos.Find(id);
+            if (nhapKho == null)
             {
                 return HttpNotFound();
             }
-            return View(hangHoa);
+            ViewBag.MaHang = new SelectList(db.HangHoas, "MaHang", "TenHang", nhapKho.MaHang);
+            ViewBag.MaNCC = new SelectList(db.NCCs, "MaNCC", "TenNCC", nhapKho.MaNCC);
+            return View(nhapKho);
         }
 
-        // POST: HangHoas/Edit/5
+        // POST: Admin/NhapKhoes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaHang,TenHang,SoLuong,DonGia")] HangHoa hangHoa)
+        public ActionResult Edit([Bind(Include = "MaPhieuNhap,NgayNhap,MaNCC,MaHang,TenHang,SoLuong,DonGia,ThanhTien")] NhapKho nhapKho)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(hangHoa).State = EntityState.Modified;
+                db.Entry(nhapKho).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(hangHoa);
+            ViewBag.MaHang = new SelectList(db.HangHoas, "MaHang", "TenHang", nhapKho.MaHang);
+            ViewBag.MaNCC = new SelectList(db.NCCs, "MaNCC", "TenNCC", nhapKho.MaNCC);
+            return View(nhapKho);
         }
 
-        // GET: HangHoas/Delete/5
+        // GET: Admin/NhapKhoes/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HangHoa hangHoa = db.HangHoas.Find(id);
-            if (hangHoa == null)
+            NhapKho nhapKho = db.NhapKhos.Find(id);
+            if (nhapKho == null)
             {
                 return HttpNotFound();
             }
-            return View(hangHoa);
+            return View(nhapKho);
         }
 
-        // POST: HangHoas/Delete/5
+        // POST: Admin/NhapKhoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            HangHoa hangHoa = db.HangHoas.Find(id);
-            db.HangHoas.Remove(hangHoa);
+            NhapKho nhapKho = db.NhapKhos.Find(id);
+            db.NhapKhos.Remove(nhapKho);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

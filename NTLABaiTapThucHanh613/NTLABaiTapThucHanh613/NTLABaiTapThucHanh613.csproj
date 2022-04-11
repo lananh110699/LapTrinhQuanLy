@@ -129,9 +129,19 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\DangNhapsController.cs" />
-    <Compile Include="Controllers\HangHoasController.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NCCsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NhapKhoesController.cs" />
+    <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
+    <Compile Include="Areas\Client\Controllers\HangHoasController.cs" />
+    <Compile Include="Areas\Client\Controllers\HomeClientController.cs" />
+    <Compile Include="Areas\Client\Controllers\KhachHangsController.cs" />
+    <Compile Include="Areas\Client\Controllers\NVKhoesController.cs" />
+    <Compile Include="Areas\Client\Controllers\XuatKhoesController.cs" />
+    <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -143,15 +153,27 @@
     <Compile Include="Migrations\202203160454118_Create_2_table.Designer.cs">
       <DependentUpon>202203160454118_Create_2_table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204111508238_create_1_table.cs" />
+    <Compile Include="Migrations\202204111508238_create_1_table.Designer.cs">
+      <DependentUpon>202204111508238_create_1_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204111617290_create_table_account.cs" />
+    <Compile Include="Migrations\202204111617290_create_table_account.Designer.cs">
+      <DependentUpon>202204111617290_create_table_account.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AutoGenerateKey.cs" />
-    <Compile Include="Models\DangNhap.cs" />
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Encrytion.cs" />
     <Compile Include="Models\HangHoa.cs" />
     <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\LTQLDB.cs" />
     <Compile Include="Models\NCC.cs" />
     <Compile Include="Models\NhapKho.cs" />
     <Compile Include="Models\NVKho.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\StringProcess.cs" />
+    <Compile Include="Models\UserRoleProvider.cs" />
     <Compile Include="Models\XuatKho.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -166,6 +188,44 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Client\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\HomeAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NCCs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NCCs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\NCCs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\NCCs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NCCs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NhapKhoes\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NhapKhoes\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\NhapKhoes\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\NhapKhoes\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NhapKhoes\Index.cshtml" />
+    <Content Include="Areas\Client\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Client\Views\HomeClient\Index.cshtml" />
+    <Content Include="Areas\Client\Views\KhachHangs\Create.cshtml" />
+    <Content Include="Areas\Client\Views\KhachHangs\Delete.cshtml" />
+    <Content Include="Areas\Client\Views\KhachHangs\Details.cshtml" />
+    <Content Include="Areas\Client\Views\KhachHangs\Edit.cshtml" />
+    <Content Include="Areas\Client\Views\KhachHangs\Index.cshtml" />
+    <Content Include="Areas\Client\Views\NVKhoes\Create.cshtml" />
+    <Content Include="Areas\Client\Views\NVKhoes\Delete.cshtml" />
+    <Content Include="Areas\Client\Views\NVKhoes\Details.cshtml" />
+    <Content Include="Areas\Client\Views\NVKhoes\Edit.cshtml" />
+    <Content Include="Areas\Client\Views\NVKhoes\Index.cshtml" />
+    <Content Include="Areas\Client\Views\XuatKhoes\Create.cshtml" />
+    <Content Include="Areas\Client\Views\XuatKhoes\Delete.cshtml" />
+    <Content Include="Areas\Client\Views\XuatKhoes\Details.cshtml" />
+    <Content Include="Areas\Client\Views\XuatKhoes\Edit.cshtml" />
+    <Content Include="Areas\Client\Views\XuatKhoes\Index.cshtml" />
+    <Content Include="Areas\Client\Views\HangHoas\Create.cshtml" />
+    <Content Include="Areas\Client\Views\HangHoas\Delete.cshtml" />
+    <Content Include="Areas\Client\Views\HangHoas\Details.cshtml" />
+    <Content Include="Areas\Client\Views\HangHoas\Edit.cshtml" />
+    <Content Include="Areas\Client\Views\HangHoas\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -191,15 +251,17 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\HangHoas\Create.cshtml" />
-    <Content Include="Views\HangHoas\Delete.cshtml" />
-    <Content Include="Views\HangHoas\Details.cshtml" />
-    <Content Include="Views\HangHoas\Edit.cshtml" />
-    <Content Include="Views\HangHoas\Index.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Delete.cshtml" />
+    <Content Include="Views\Roles\Details.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\DangNhaps\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Client\Data\" />
+    <Folder Include="Views\Accounts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -220,6 +282,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203160454118_Create_2_table.resx">
       <DependentUpon>202203160454118_Create_2_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204111508238_create_1_table.resx">
+      <DependentUpon>202204111508238_create_1_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204111617290_create_table_account.resx">
+      <DependentUpon>202204111617290_create_table_account.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

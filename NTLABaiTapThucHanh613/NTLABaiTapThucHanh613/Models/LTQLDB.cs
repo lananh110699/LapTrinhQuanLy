@@ -12,7 +12,7 @@ namespace NTLABaiTapThucHanh613.Models
         {
         }
         public virtual DbSet<HangHoa> HangHoas { get; set; }
-        public virtual DbSet<DangNhap> DangNhaps { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<XuatKho> XuatKhos { get; set; }
         public virtual DbSet<NhapKho> NhapKhos { get; set; }
         public virtual DbSet<NCC> NCCs { get; set; }
@@ -23,5 +23,7 @@ namespace NTLABaiTapThucHanh613.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
         }
+
+        public System.Data.Entity.DbSet<NTLABaiTapThucHanh613.Models.Role> Roles { get; set; }
     }
 }
