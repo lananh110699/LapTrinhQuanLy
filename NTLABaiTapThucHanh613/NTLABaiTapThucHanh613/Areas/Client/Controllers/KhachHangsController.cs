@@ -13,6 +13,7 @@ namespace NTLABaiTapThucHanh613.Areas.Client.Controllers
     public class KhachHangsController : Controller
     {
         private LTQLDB db = new LTQLDB();
+        AutoGenerateKey aukey = new AutoGenerateKey();
 
         // GET: Client/KhachHangs
         public ActionResult Index()
@@ -38,6 +39,17 @@ namespace NTLABaiTapThucHanh613.Areas.Client.Controllers
         // GET: Client/KhachHangs/Create
         public ActionResult Create()
         {
+            if (db.KhachHangs.OrderByDescending(m => m.MaKhachHang).Count() == 0)
+            {
+                var newID = "MKH001";
+                ViewBag.NewMKHID = newID;
+            }
+            else
+            {
+                var MKHID = db.KhachHangs.OrderByDescending(m => m.MaKhachHang).FirstOrDefault().MaKhachHang;
+                var newID = aukey.GenerateKey(MKHID);
+                ViewBag.NewMKHID = newID;
+            }
             return View();
         }
 
