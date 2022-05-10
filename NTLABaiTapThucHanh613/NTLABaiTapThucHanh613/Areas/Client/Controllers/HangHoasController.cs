@@ -94,6 +94,7 @@ namespace NTLABaiTapThucHanh613.Areas.Client.Controllers
                                     
             } 
             ViewBag.Success = "Thêm dữ liệu thành công";
+            return View();
         }
 
         // GET: Client/HangHoas/Details/5
