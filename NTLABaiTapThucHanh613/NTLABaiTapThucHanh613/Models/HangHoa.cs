@@ -18,6 +18,7 @@ namespace NTLABaiTapThucHanh613.Models
 
         [Required(ErrorMessage = "Tên Hàng không được bỏ trống")]
         [Display(Name = "Tên Hàng")]
+        [MinLength(3)]
         public string TenHang { get; set; }
 
 

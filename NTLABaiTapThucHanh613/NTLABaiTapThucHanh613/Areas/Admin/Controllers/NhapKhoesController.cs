@@ -13,6 +13,7 @@ namespace NTLABaiTapThucHanh613.Areas.Admin.Controllers
     public class NhapKhoesController : Controller
     {
         private LTQLDB db = new LTQLDB();
+        AutoGenerateKey aukey = new AutoGenerateKey();
 
         // GET: Admin/NhapKhoes
         public ActionResult Index()
@@ -39,6 +40,17 @@ namespace NTLABaiTapThucHanh613.Areas.Admin.Controllers
         // GET: Admin/NhapKhoes/Create
         public ActionResult Create()
         {
+            if (db.NhapKhos.OrderByDescending(m => m.MaPhieuNhap).Count() == 0)
+            {
+                var newID = "MPN001";
+                ViewBag.NewMPNID = newID;
+            }
+            else
+            {
+                var MPNID = db.NhapKhos.OrderByDescending(m => m.MaPhieuNhap).FirstOrDefault().MaPhieuNhap;
+                var newID = aukey.GenerateKey(MPNID);
+                ViewBag.NewMPNID = newID;
+            }
             ViewBag.MaHang = new SelectList(db.HangHoas, "MaHang", "TenHang");
             ViewBag.MaNCC = new SelectList(db.NCCs, "MaNCC", "TenNCC");
             return View();

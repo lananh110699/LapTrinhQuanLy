@@ -145,25 +145,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202203151636449_done.cs" />
-    <Compile Include="Migrations\202203151636449_done.Designer.cs">
-      <DependentUpon>202203151636449_done.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202203160454118_Create_2_table.cs" />
-    <Compile Include="Migrations\202203160454118_Create_2_table.Designer.cs">
-      <DependentUpon>202203160454118_Create_2_table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202204111508238_create_1_table.cs" />
-    <Compile Include="Migrations\202204111508238_create_1_table.Designer.cs">
-      <DependentUpon>202204111508238_create_1_table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202204111617290_create_table_account.cs" />
-    <Compile Include="Migrations\202204111617290_create_table_account.Designer.cs">
-      <DependentUpon>202204111617290_create_table_account.cs</DependentUpon>
+    <Compile Include="Migrations\202205040317480_initial_create.cs" />
+    <Compile Include="Migrations\202205040317480_initial_create.Designer.cs">
+      <DependentUpon>202205040317480_initial_create.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AutoGenerateKey.cs" />
     <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Encrytion.cs" />
     <Compile Include="Models\HangHoa.cs" />
     <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\LTQLDB.cs" />
@@ -171,6 +160,8 @@
     <Compile Include="Models\NhapKho.cs" />
     <Compile Include="Models\NVKho.cs" />
     <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\StringProcess.cs" />
+    <Compile Include="Models\UserRoleProvider.cs" />
     <Compile Include="Models\XuatKho.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -223,6 +214,7 @@
     <Content Include="Areas\Client\Views\HangHoas\Details.cshtml" />
     <Content Include="Areas\Client\Views\HangHoas\Edit.cshtml" />
     <Content Include="Areas\Client\Views\HangHoas\Index.cshtml" />
+    <Content Include="Areas\Client\Views\HangHoas\Upfile.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -253,12 +245,16 @@
     <Content Include="Views\Roles\Details.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Accounts\Register.cshtml" />
+    <Content Include="Views\Accounts\Logout.cshtml" />
+    <Content Include="Views\Accounts\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Client\Data\" />
-    <Folder Include="Views\Accounts\" />
+    <Folder Include="Ảnh\" />
+    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -274,17 +270,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202203151636449_done.resx">
-      <DependentUpon>202203151636449_done.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202203160454118_Create_2_table.resx">
-      <DependentUpon>202203160454118_Create_2_table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202204111508238_create_1_table.resx">
-      <DependentUpon>202204111508238_create_1_table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202204111617290_create_table_account.resx">
-      <DependentUpon>202204111617290_create_table_account.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202205040317480_initial_create.resx">
+      <DependentUpon>202205040317480_initial_create.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

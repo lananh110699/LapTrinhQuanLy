@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Data.OleDb;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -19,6 +23,77 @@ namespace NTLABaiTapThucHanh613.Areas.Client.Controllers
         public ActionResult Index()
         {
             return View(db.HangHoas.ToList());
+        }
+
+        public ActionResult Upfile()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Upfile (HttpPostedFileBase file)
+        {
+            string filePath = string.Empty;
+            if (file !=null)
+            {
+                string path = Server.MapPath("~/Uploads/");
+                filePath = path + Path.GetFileName(file.FileName);
+                string extension = Path.GetExtension(file.FileName);
+                file.SaveAs(filePath);
+                string conString = string.Empty;
+                switch (extension)
+                {
+                    case ".xls":
+                        conString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source =" + filePath + ";Extended Properties='Excel 8.0;HDR=YES' ";
+                        break;
+                    case ".xlsx":
+                        conString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source =" + filePath + ";Extended Properties='Excel 12.0;HDR=YES' ";
+                        break;
+                }
+                DataTable dt = new DataTable();
+                conString = string.Format(conString, filePath);
+                using (OleDbConnection connExcel = new OleDbConnection(conString))
+                {
+                    using (OleDbCommand cmdExcel = new OleDbCommand())
+                    {
+                        using (OleDbDataAdapter odaExcel = new OleDbDataAdapter())
+                        {
+                            cmdExcel.Connection = connExcel;
+                            connExcel.Open();
+                            DataTable dtExcelShema;
+                            dtExcelShema = connExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                            string sheetName = dtExcelShema.Rows[0]["TABLE_NAME"].ToString();
+                            connExcel.Close();
+
+                            connExcel.Open();
+                            cmdExcel.CommandText = "SELECT * From[" + sheetName + "]";
+                            odaExcel.SelectCommand = cmdExcel;
+                            odaExcel.Fill(dt);
+                            connExcel.Close();
+
+                        }    
+                    }    
+                }
+                conString = @"data source=DESKTOP-S60DTPV;initial catalog=LTQLDB;integrated security=True";
+                using (SqlConnection con = new SqlConnection(conString)) 
+                {
+                    using (SqlBulkCopy sqlBulkCopy = new SqlBulkCopy(con))
+                    {
+                        
+                        sqlBulkCopy.DestinationTableName = "dbo.HangHoa";
+                        sqlBulkCopy.ColumnMappings.Add("MaHang", "MaHang");
+                        sqlBulkCopy.ColumnMappings.Add("TenHang", "TenHang");
+                        sqlBulkCopy.ColumnMappings.Add("SoLuong", "SoLuong");
+                        sqlBulkCopy.ColumnMappings.Add("DonGia", "DonGia");
+                        sqlBulkCopy.ColumnMappings.Add("ThanhTien", "ThanhTien");
+                        con.Open();
+                        sqlBulkCopy.WriteToServer(dt);
+                        con.Close();
+
+                    }
+                } 
+                                    
+            } 
+            ViewBag.Success = "Thêm dữ liệu thành công";
         }
 
         // GET: Client/HangHoas/Details/5
@@ -137,5 +212,7 @@ namespace NTLABaiTapThucHanh613.Areas.Client.Controllers
             }
             base.Dispose(disposing);
         }
+        
+
     }
 }

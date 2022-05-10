@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Upfile";
+    Layout = "~/Areas/Client/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Upfile", "HangHoas", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" />
+    <br />
+    <input type="Submit" value="Import to DB" class="btn btn-primary" />
+
+}
+<br />
+<div>
+    @ViewBag.Success
+</div>
+

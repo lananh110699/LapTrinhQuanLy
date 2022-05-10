@@ -8,7 +8,7 @@ namespace NTLABaiTapThucHanh613.Areas.Admin.Controllers
 {
     public class HomeAdminController : Controller
     {
-        [Authorize(Roles = "Admin")]
+       
         // GET: Admin/HomeAdmin
         public ActionResult Index()
         {

@@ -13,6 +13,7 @@ namespace NTLABaiTapThucHanh613.Areas.Client.Controllers
     public class NVKhoesController : Controller
     {
         private LTQLDB db = new LTQLDB();
+        AutoGenerateKey aukey = new AutoGenerateKey();
 
         // GET: Client/NVKhoes
         public ActionResult Index()
@@ -38,7 +39,19 @@ namespace NTLABaiTapThucHanh613.Areas.Client.Controllers
         // GET: Client/NVKhoes/Create
         public ActionResult Create()
         {
+            if (db.HangHoas.OrderByDescending(m => m.MaHang).Count() == 0)
+            {
+                var newID = "MNV001";
+                ViewBag.NewMNVID = newID;
+            }
+            else
+            {
+                var MNVID = db.NVKhos.OrderByDescending(m => m.MaNV).FirstOrDefault().MaNV;
+                var newID = aukey.GenerateKey(MNVID);
+                ViewBag.NewMNVID = newID;
+            }
             return View();
+
         }
 
         // POST: Client/NVKhoes/Create
